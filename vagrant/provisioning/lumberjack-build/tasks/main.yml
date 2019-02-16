@@ -1,0 +1,11 @@
+---
+# tasks file for lumberjack-build
+- name: Update the apt-get cache
+  become: true
+  apt:
+    update_cache: yes
+
+- name: Copy the Hyperledger SDK from Github
+  git:
+    repo: https://github.com/hyperledger/indy-sdk.git
+    dest: /home/vagrant/indy-sdk

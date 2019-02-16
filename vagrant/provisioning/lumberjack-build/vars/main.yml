@@ -1,0 +1,4 @@
+---
+# vars file for lumberjack-build
+
+getting_started_dir: ~/indy-sdk/docs/getting-started

@@ -1,0 +1,20 @@
+---
+- name: Indy-Pool Server Host Build
+  hosts: all
+  gather_facts: true
+
+  vars:
+    pip_install_packages:
+      - name: docker
+  
+  roles:
+    - role: lumberjack-build
+    - role: geerlingguy.docker
+      become: true
+  
+  tasks:
+
+  - name: Docker Compose up
+    service: 
+      name: docker
+      state: started
