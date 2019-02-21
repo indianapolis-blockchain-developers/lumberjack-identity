@@ -1,0 +1,37 @@
+{
+  "firstName" : "Patrick",
+  "SecondName " :" Malon",
+  "AddressLine1": "1234 Maple Lane",
+  "AddressLine2": "Unit/BuildingNumber 3355",
+  "City": "Indianaplise",
+  "State": "Indiana",
+  "ZipCode":"46666",
+  "PhoneNumber" : "(916) 425 2222",
+  "EmailAddress" : "email@email.com",
+  "password" : "ThisHasToBeStoreSomewhere",
+  "StateID": 
+    { "StateIssuer":" Indiana",
+      "ID/DLN Number" : "1234-12-34567",
+      "DateIssued": "mm/dd/yyyy",
+      "ExpirationDate":"mm/dd/yyyy",
+      "Address" : "AddressListedOnID",
+      "TransactionID": "53847534587093847589"
+    }
+  ,
+  "LibraryIDCard": "barcodeOfTheIDCard",
+  
+  "IssuedISBNNumbers" : {
+      "Book#1" : {
+            "BookName" : "The Sound of Madness",
+            "BookISBN" : "ISBN number put here",
+            "DateReleased" : "mm/dd/yyyy",
+            "ExpectedReturn": "mm/dd/yyyy"
+      },
+      "Book#2" : {
+            "BookName" : "The Sound of Madness",
+            "BookISBN" : "ISBN number put here",
+            "DateReleased" : "mm/dd/yyyy",
+            "ExpectedReturn": "mm/dd/yyyy"
+      }
+  }
+}
