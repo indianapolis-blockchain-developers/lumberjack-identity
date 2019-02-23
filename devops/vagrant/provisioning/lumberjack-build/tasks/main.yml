@@ -5,6 +5,11 @@
   apt:
     update_cache: yes
 
+- name: Update all packages to the latest version
+  become: true
+  apt:
+   upgrade: dist
+   
 - name: Copy the Hyperledger SDK from Github
   git:
     repo: https://github.com/hyperledger/indy-sdk.git

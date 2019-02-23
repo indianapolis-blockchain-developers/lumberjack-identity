@@ -14,7 +14,12 @@
   
   tasks:
 
-  - name: Docker Compose up
+  - name: Start Docker Service
     service: 
       name: docker
       state: started
+  
+  - name: Launch Indy-SDK Juypter notebook with docker-compose up
+    command: docker-compose build -d
+    args:
+      chdir: ~/indy-sdk/docs/getting-started
