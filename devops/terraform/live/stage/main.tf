@@ -92,6 +92,7 @@ resource "aws_instance" "bastion" {
 
 resource "aws_key_pair" "bastion_key" {
     key_name   = "bastion_key.pem"
+    public_key = "${var.bastion_public_key}"
 }
 
 output "bastion_public_ip" {
