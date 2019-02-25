@@ -1,3 +1,12 @@
+variable "environment_tag" {
+  description = "Environment tag"
+  default = "Stage"
+}
+variable "availability_zone" {
+    description          = "availability zone to create subnet"
+    default              = "us-east-1a"
+}
+
 variable "VPCCIDR" {
     type                 = "string"
     description          = "Must be a valid IP CIDR Range of the form x.x.x.x/x"
@@ -47,4 +56,5 @@ variable "amis"        {
 
     }
 }
+
 
