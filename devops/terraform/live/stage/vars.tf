@@ -2,6 +2,10 @@ variable "environment_tag" {
   description = "Environment tag"
   default = "Stage"
 }
+
+variable "resource_group" {
+    default = "lumberjack-identity"
+}
 variable "availability_zone" {
     description          = "availability zone to create subnet"
     default              = "us-east-1a"
