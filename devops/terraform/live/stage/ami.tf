@@ -22,15 +22,6 @@ resource "aws_instance" "rke-node" {
   # iam_instance_profile   = "${aws_iam_instance_profile.rke-aws.name}"
   vpc_security_group_ids = ["${aws_security_group.private_sg.id}"]
   subnet_id              = "${aws_subnet.private.id}"
-  tags {
-         Name = "rke"
-     }
-
-  provisioner "remote-exec" {
-    connection {
-      user        = "centos"
-      private_key = "${tls_private_key.node-key.private_key_pem}"
-    }
-    
+  
+  tags {Name = "rke"}
 }
-
