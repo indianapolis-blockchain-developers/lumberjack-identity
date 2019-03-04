@@ -31,11 +31,6 @@ resource "aws_instance" "rke-node" {
       user        = "centos"
       private_key = "${tls_private_key.node-key.private_key_pem}"
     }
-
-    inline = [
-      "curl releases.rancher.com/install-docker/1.12.sh | bash",
-      "sudo usermod -a -G docker centos",
-    ]
-  }
+    
 }
 
