@@ -60,8 +60,11 @@ variable "amis"        {
 
     }
 }
-
 variable "bastion_public_key" {
     type = "string"
     default = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDQH9D7E4HIX/JbbNdlRXwapd1fRfQjSd8c7nypYvb0PRuunF8BUSxalYqFs7DZtMDinltBiY02eiZ4X4j8vqnLQGvYBjtaDDPLkUwJbpq6lA8e1Qd3UjROzf1JYYaJWeuXfwDPKsZ4d2Sl0xlHlLhEfMnvMgWDzqFbAOTFJYIMlqzDeuI/cClx91s997/9klJugx0Ob5tYi+WSSse87Ujv3/IlVboOg1EeftiEFuz2YKKreTAsC+ahKepdxUDTdMPnvtzEbnfGFJe/ErbQb3/f3MWgPAewjyZlkvRFg2GUHem2MJmJO9Wb0L6MoJyCIGX0/T0wRreXvoON/hfqwcq6mt2aUqNipAsaHjZz+yDA9L+SObcfuG53a4cHeZ4o5m9Fefy6MVDmHvqLr7AVwiNw6hGDpg/7clVFd34upv72Lx/vR5y2k7DzZBWnKc/raKHJ3LqW+mtPZ7jE5otWBuZ/QD8f4neVX9o/4n3kmxUFxS3CWpoMDIn1dvcr7+hf6tEnQBhoYV24tC8GhGF1YOW5dXcRzO4MO6wUoQ4jVZLL7hih2H0DI6MlzpnW8kVXADgwm/a6wXvYLmr/hqFmQHlH+RVKQyx45PctWtjZ/7YQLFf3kJpmvp02ZupuITxdih6d43ZgKX0mMKC4sAbmfhD7TADPYQ7pinSnYoK13UiLaw== indianapolisblockchain@gmail.com"
+}
+
+variable "cluster_id" {
+  default = "rke"
 }
