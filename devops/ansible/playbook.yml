@@ -1,0 +1,13 @@
+---
+- hosts: localhost
+  connection: local
+
+  tasks:
+  - debug:
+      msg: "before we run our role"
+  - import_role:
+      name: terraform-deployment
+  - include_role:
+      name: terraform-deployment
+  - debug:
+      msg: "after we ran our role"
