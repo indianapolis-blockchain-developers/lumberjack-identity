@@ -20,6 +20,7 @@ resource "aws_instance" "bastion" {
             "sudo yum -y install ansible",
             "sudo yum -y install python-boto",
             "sudo yum -y install vim",
+            "sudo yum -y install git",
             "mkdir inventory",
             "curl -O https://raw.githubusercontent.com/ansible/ansible/devel/contrib/inventory/ec2.py",
             "curl -O https://raw.githubusercontent.com/ansible/ansible/devel/contrib/inventory/ec2.ini",
@@ -40,7 +41,7 @@ resource "aws_instance" "bastion" {
 #     vpc_security_group_ids              = ["${aws_security_group.bastion-sg.id}"]
      
 resource "aws_instance" "rke-node" {
-  count = 2
+  count = 3
   ami                    = "${lookup(var.amis, var.aws_region)}"
   instance_type          = "${var.InstanceType}"
   key_name               = "${aws_key_pair.rke-node-key.id}"
