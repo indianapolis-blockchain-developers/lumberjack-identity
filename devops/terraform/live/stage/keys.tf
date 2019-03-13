@@ -3,10 +3,6 @@ resource "aws_key_pair" "bastion_key" {
     public_key = "${var.bastion_public_key}"
 }
 
-output "rke_private_key" {
-  value = "${tls_private_key.node-key.private_key_pem}"
-}
-
 resource tls_private_key "node-key" {
   algorithm = "RSA"
 }

@@ -1,3 +1,5 @@
+
+
 resource "aws_instance" "bastion" {
     ami                                 = "${lookup(var.amis, var.aws_region)}"
     key_name                            = "${aws_key_pair.bastion_key.key_name}"
@@ -12,6 +14,7 @@ resource "aws_instance" "bastion" {
     tags {
         Name = "bastion"
     }
+    
 
     provisioner "remote-exec" {
         inline = [
@@ -21,11 +24,13 @@ resource "aws_instance" "bastion" {
             "sudo yum -y install python-boto",
             "sudo yum -y install vim",
             "sudo yum -y install git",
-            "mkdir inventory",
-            "curl -O https://raw.githubusercontent.com/ansible/ansible/devel/contrib/inventory/ec2.py",
-            "curl -O https://raw.githubusercontent.com/ansible/ansible/devel/contrib/inventory/ec2.ini",
-            "mv ec2.* ~/inventory/",
-            "chmod +x ~/inventory/ec2.py "
+            "git init",
+            "git clone https://github.com/injectedfusion/lumberjack-ansible",
+            "chmod +x /home/centos/lumberjack-ansible/module_utils/ec2.py",
+            "cd /etc/ansible/roles",
+            "sudo git clone https://github.com/geerlingguy/ansible-role-docker",
+            "sudo mv -f /home/centos/lumberjack-ansible/ansible.cfg /etc/ansible/ansible.cfg"
+            
         ]     
     }
 
@@ -41,16 +46,22 @@ resource "aws_instance" "bastion" {
 #     vpc_security_group_ids              = ["${aws_security_group.bastion-sg.id}"]
      
 resource "aws_instance" "rke-node" {
-  count = 3
+  count = 4
   ami                    = "${lookup(var.amis, var.aws_region)}"
   instance_type          = "${var.InstanceType}"
   key_name               = "${aws_key_pair.rke-node-key.id}"
   iam_instance_profile   = "${aws_iam_instance_profile.rke-aws.name}"
   vpc_security_group_ids = ["${aws_security_group.private_sg.id}"]
   subnet_id              = "${aws_subnet.private.id}"
+
   root_block_device {
       delete_on_termination = true
   }  
-  tags {Name = "rke"}
+  tags {
+      Name = "rke-${count.index}"
+      role = "k8s-cluster"
+    }
+
+
 }
 
