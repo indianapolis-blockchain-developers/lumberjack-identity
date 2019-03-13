@@ -14,8 +14,12 @@ resource "aws_instance" "bastion" {
     tags {
         Name = "bastion"
     }
-    
 
+    provisioner "file" {
+        content = "${tls_private_key.node-key.private_key_pem}"
+        destination = "/home/centos/.ssh/rke_private.pem" 
+    }
+    
     provisioner "remote-exec" {
         inline = [
             "sudo yum -y update",
@@ -29,8 +33,9 @@ resource "aws_instance" "bastion" {
             "chmod +x /home/centos/lumberjack-ansible/module_utils/ec2.py",
             "cd /etc/ansible/roles",
             "sudo git clone https://github.com/geerlingguy/ansible-role-docker",
-            "sudo mv -f /home/centos/lumberjack-ansible/ansible.cfg /etc/ansible/ansible.cfg"
-            
+            "sudo mv -f /home/centos/lumberjack-ansible/ansible.cfg /etc/ansible/ansible.cfg",  
+            "sudo chown centos /home/centos/.ssh/rke_private.pem",
+            "sudo chmod 400 /home/centos/.ssh/rke_private.pem"      
         ]     
     }
 
